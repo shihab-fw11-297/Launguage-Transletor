@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style/style.css">
+    <title>Document</title>
+</head>
+<body>
+    <div id="navbars">
+    </div>
+    <div id="newsBox">
+
+    </div>
+</body>
+</html>
+<script type="module">
+    import navbar from "./component/navbar.js";
+    import { getNews, showNewsData } from "./script/showData.js";
+    let nav = document.getElementById("navbars")
+    nav.innerHTML = navbar();
+
+    let res = getNews(`https://newsapi.org/v2/everything?q=India&apiKey=547e02e8bcd84ae1b95e11b720d27e6c`)
+
+    res.then((data) => {
+
+        let parent = document.getElementById("newsBox");
+        showNewsData(data, parent)
+    })
+</script>
